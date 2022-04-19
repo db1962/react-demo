@@ -1,0 +1,17 @@
+Id,proposalName,customerGrpName,date,description,status,,,statusId,,"('proposalName', 'customerGrpName', 'date', 'description', statusId)"
+1,proposal1,customerGrpName1,10/12/2021,Detailed description1,In Preparation,,,1,,"(1, 'proposal1', 'customerGrpName1', '2021-12-10', 'Detailed description1', 1)"
+2,proposal2,customerGrpName2,13/01/2017,Detailed description2,Approved,,,2,,"(2, 'proposal2', 'customerGrpName2', '2017-01-13', 'Detailed description2', 2)"
+3,proposal3,customerGrpName3,1/05/2020,Detailed description3,In Support,,,3,,"(3, 'proposal3', 'customerGrpName3', '2020-05-01', 'Detailed description3', 3)"
+4,proposal4,customerGrpName4,17/06/2014,Detailed description4,In Support,,,3,,"(4, 'proposal4', 'customerGrpName4', '2014-06-17', 'Detailed description4', 3)"
+5,proposal5,customerGrpName5,20/08/2012,Detailed description5,In Approve,,,4,,"(5, 'proposal5', 'customerGrpName5', '2012-08-20', 'Detailed description5', 4)"
+6,proposal6,customerGrpName6,2/08/2017,Detailed description6,In Support,,,3,,"(6, 'proposal6', 'customerGrpName6', '2017-08-02', 'Detailed description6', 3)"
+7,proposal7,customerGrpName7,20/08/2012,Detailed description7,In Approve,,,4,,"(7, 'proposal7', 'customerGrpName7', '2012-08-20', 'Detailed description7', 4)"
+8,proposal8,customerGrpName3,19/12/2021,Detailed description8,In Preparation,,,1,,"(8, 'proposal8', 'customerGrpName3', '2021-12-19', 'Detailed description8', 1)"
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,status,,,statusId,,"statusId,'status'"
+,,,,,In Preparation,,,1,,"(1,'In Preparation')"
+,,,,,Approved,,,2,,"(2,'Approved')"
+,,,,,In Support,,,3,,"(3,'In Support')"
+,,,,,In Approve,,,4,,"(4,'In Approve')"
