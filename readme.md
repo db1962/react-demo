@@ -1,1 +1,1 @@
-[](./devops/readme.md)
+[](devops/readme.md)
