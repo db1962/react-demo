@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import DataGrid, { SelectColumn } from 'react-data-grid'
+import DataGrid from 'react-data-grid'
 
 
 // function getRowId(row) {
