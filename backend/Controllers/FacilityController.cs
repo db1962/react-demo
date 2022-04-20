@@ -1,6 +1,7 @@
 ﻿using backend.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
 namespace backend.Controllers
 {
@@ -21,7 +22,18 @@ namespace backend.Controllers
         [HttpGet("{id}", Name = "Proposal Id")]
         public async Task<Facility> GetFacility(int id)
         {
-            return await facilityActions.GetFacilityAsync(id, configuration);
+
+            try
+            {
+                return await facilityActions.GetFacilityAsync(id, configuration);
+            }
+            catch (Exception ex)
+            {
+                this.Response.StatusCode = 400;
+                // add some logging here
+                Debug.WriteLine(ex.Message);
+                return null;
+            }
         }
 
     }

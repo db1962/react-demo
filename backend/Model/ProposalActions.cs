@@ -1,10 +1,16 @@
-﻿using System.Configuration;
+﻿using backend.Exceptions;
+using System.Configuration;
 using System.Data.SqlClient;
 
 namespace backend.Model
 {
     public class ProposalActions : IProposalActions
     {
+        /// <summary>
+        /// Fetch the proposals from database.
+        /// </summary>
+        /// <param name="config"></param>
+        /// <returns></returns>
         public async Task<List<Proposal>> GetProposalsAsync(IConfiguration config)
         {
             using (SqlConnection con = new SqlConnection(config.GetConnectionString("Database")))
@@ -16,6 +22,9 @@ namespace backend.Model
                     cmd.Connection = con;
                     await con.OpenAsync();
                     var reader = await cmd.ExecuteReaderAsync();
+
+                    if (!reader.HasRows) throw new ReaderNoRowsFoundException("No rows associated with the criteria");
+
                     var result = new List<Proposal>();
                     
                     while (reader.Read())
@@ -35,6 +44,14 @@ namespace backend.Model
             }
         }
 
+        /// <summary>
+        /// Update the proposal with a new facility
+        /// </summary>
+        /// <param name="proposalId"></param>
+        /// <param name="oldFacilityId"></param>
+        /// <param name="newFacilityId"></param>
+        /// <param name="config"></param>
+        /// <returns></returns>
         public async Task<bool> UpdateProposalFacility(int proposalId, int oldFacilityId, int newFacilityId, IConfiguration config)
         {
             using (SqlConnection con = new SqlConnection(config.GetConnectionString("Database")))

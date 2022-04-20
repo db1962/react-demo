@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿using backend.Exceptions;
+using System.Data.SqlClient;
 
 namespace backend.Model
 {
@@ -17,10 +18,10 @@ namespace backend.Model
                     await con.OpenAsync();
                     var reader = await cmd.ExecuteReaderAsync();
 
+                    if (!reader.HasRows) throw new ReaderNoRowsFoundException("No rows associated with the criteria");
                     var facility = new Facility();
                     while (reader.Read())
-                    {
-                        
+                    {                        
                         facility.Id = reader.GetInt32(reader.GetOrdinal("Id"));
                         facility.Currency = reader.GetString(reader.GetOrdinal("Currency"));
                         facility.StartDate = reader.GetDateTime(reader.GetOrdinal("StartDate"));
@@ -28,7 +29,6 @@ namespace backend.Model
                         facility.ProposalId = reader.GetInt32(reader.GetOrdinal("ProposalId"));
                         facility.BookingCountry = reader.GetString(reader.GetOrdinal("BookingCountry"));
                         facility.MaturityDate = reader.GetDateTime(reader.GetOrdinal("MaturityDate"));
-
                     }
                    
                     return facility;

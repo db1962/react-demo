@@ -1,5 +1,6 @@
 ﻿using backend.Model;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -22,7 +23,19 @@ namespace backend.Controllers
         [HttpGet]
         public async Task<IEnumerable<Proposal>> Get()
         {
-            return await proposalActions.GetProposalsAsync(configuration);
+
+            try
+            {
+                return await proposalActions.GetProposalsAsync(configuration);
+            }
+            catch (Exception ex)
+            {
+                this.Response.StatusCode = 400;
+                // add some logging here
+                Debug.WriteLine(ex.Message);
+
+                return Enumerable.Empty<Proposal>();
+            }
         }
 
 
@@ -30,8 +43,17 @@ namespace backend.Controllers
         [HttpPost]
         public async void Post(int proposalId, int oldFacilityId, int newFacilityId)
         {
-            await proposalActions.UpdateProposalFacility(proposalId, oldFacilityId, newFacilityId, configuration);
-        }
 
+            try
+            {
+                await proposalActions.UpdateProposalFacility(proposalId, oldFacilityId, newFacilityId, configuration);
+            }
+            catch (Exception ex)
+            {
+                this.Response.StatusCode = 400;
+                // add some logging here
+                Debug.WriteLine(ex.Message);
+            }
+        }
     }
 }
