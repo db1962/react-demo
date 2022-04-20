@@ -1,3 +1,7 @@
+This document is still been worked on.
+
+
+
 ## Setup local db database
 
 I choose to install sqllocaldb for this task - I understand that in an enterprise or cloud scenario i would have configured a non localdb database. The benefit of me using this approach is does not fill my personal computer with clutter.
